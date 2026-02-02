@@ -112,8 +112,8 @@
     
     if ([returnValue length] == 0) {
         
-        // if no name has been specified, we try to get the local name
-        returnValue = (NSString*)CFBridgingRelease(SCDynamicStoreCopyComputerName(NULL, NULL));
+        // if no name has been specified, try the local host name
+        returnValue = (NSString*)CFBridgingRelease(SCDynamicStoreCopyLocalHostName(NULL));
         
         // if this didn't work, we use the first local ip address we find
         if ([returnValue length] == 0) {
